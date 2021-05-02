@@ -1,0 +1,67 @@
+<br>
+<br>
+<% 
+def Date(date)
+Date.parse(date.to_s).strftime('%m/%d/%Y')
+end
+%>
+<!DOCTYPE html>   
+<html>   
+<body>   
+ <div class="container">   
+    <h3 style="text-align: center">JOURNAL LIST</h3>   
+     <div>
+     <%= link_to 'View user details', users_path %>
+     </div>
+      <div style="text-align:right">   
+      <%= link_to 'Add new user', new_user_path, class:'btn btn-primary'%>
+      <%= link_to 'Add new Journal', new_journal_path, class:'btn btn-primary' %><br/><br/>
+      </div>   
+      <br>   
+      <div class="total">
+    
+    <span class="total_income">Total Income: <b><%=Journal.total_income%> </b></span>
+    
+    <span class="total_expense">Total Expenses: <b><%=Journal.total_expense %> </b></span>
+</div><br><br>
+    
+<table class="table">
+<thead>
+  <tr>
+  <th scope="col">#</th>
+  <th scope="col">Title</th>
+  <th scope="col">Users</th>
+    <th scope="col">Amount</th>
+    <th scope="col">Cash Details</th>
+    <th scope="col">Date</th>
+    <th scope="col">Actions</th>
+  </tr>
+</thead>
+<tbody>
+<% @journals.each do |journal| %>
+  <tr>   
+    <th scope = "row"><%=journal.id%></th>
+    <td><%= journal.title%></td>   
+    <td><%= journal.user.full_name%></td>   
+      <td><%= journal.amount %></td>   
+      <td><%= journal.cashin_out %></td>  
+
+    <td><%= Date(journal.created_at)%> </td>
+       <div>   
+       <td>   
+        <%= link_to 'Show', journal_path(journal), class:"btn btn-success" %>   
+        <%= link_to 'Edit', edit_journal_path(journal), Class: "btn btn-warning"%>   
+        <%= link_to 'Delete', journal_path(journal), Class:"btn btn-danger", method: :delete %>   
+      </div>   
+    </td>   
+  </tr>   
+<% end %>   
+</tbody>
+</table>
+    </div>   
+  </body>   
+</html>  
+
+
+
+

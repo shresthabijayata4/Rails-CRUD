@@ -1,0 +1,8 @@
+<%= form_for(@post) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br/><br/>
+    <%= f.label :body %>
+    <%= f.text_area :body %><br/><br/>
+    <%= f.select :user_id, options_for_select(User.all.map {|u| [u.full_name, u.id]}) %>
+    <%= f.submit 'Create Post' %>
+<% end %>

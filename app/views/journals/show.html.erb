@@ -1,0 +1,15 @@
+<h3>This is <%= @journal.title %> Journal.</h3>
+<label>Title</label>
+<%= @journal.title %><br/>
+<label>Amount:</label>
+<%= @journal.amount %><br/>
+<label>CashDetails</label>
+<%= @journal.cashin_out %><br>
+<br/><br/>
+<%= link_to 'Edit Journal', journal_path(@journal) %>
+<%=link_to 'Journal List', journals_path %>
+
+<div class="show_tot">
+<h3 class="show_tot_income">Total Income: <%= Journal.user_total_income(@journal.user_id) %></h3>
+<h3 class="show_tot_expense">Total Expense: <%= Journal.user_total_expense(@journal.user_id) %></h3>
+</div>

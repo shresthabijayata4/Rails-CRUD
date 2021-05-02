@@ -1,0 +1,8 @@
+<label>Title:</label>
+<%= @post.title %><br/>
+<label>Body:</label>
+<%= @post.body %><br/>
+<label>Aurthor:</label>
+<%= link_to @post.user.full_name, user_path(@post.user) %><br/>
+<br/><br/>
+<%= link_to 'Edit post', edit_post_path(@post) %>
